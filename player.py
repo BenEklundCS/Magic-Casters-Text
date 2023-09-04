@@ -63,35 +63,36 @@ class Player:
     # Attacks
   
     def slash(self, monster):
-        slowPrint("You slash the " + monster.getName() + ".")
+        slowPrint("You slash the {}.".format(monster.getName()))
         roll = d6()
         damage = roll + self.getAttack() - monster.getDefense()
-        slowPrint("You rolled a " + str(roll) + " for your slash attack for " + str(damage) + " damage.")
+        slowPrint("You rolled a {} for your slash attack for {} damage.".format(roll, damage))
         monster.setHealth(monster.getHealth() - damage)
-        slowPrint("The " + str(monster.getName()) + "'s health is now " + str(monster.getHealth()))
+        slowPrint("The {}'s health is now {}".format(monster.getName(), monster.getHealth()))
         
     def slam(self, monster):
         self.setMana(self.getMana() - 5)
-        slowPrint("You slam the " + monster.getName() + " " + str(self.getMana()) + "/50 mana left.")
+        slowPrint("You slam the {} {}/{} mana left.".format(monster.getName(), self.getMana(), self.getMaxMana()))
         roll = d8()
         damage = roll + self.getAttack() - monster.getDefense()
-        slowPrint("You rolled a " + str(roll) + " for your slam attack for " + str(damage) + " damage.")
+        slowPrint("You rolled a {} for your slam attack for {} damage.".format(roll, damage))
         monster.setHealth(monster.getHealth() - damage)
-        slowPrint("The " + str(monster.getName()) + "'s health is now " + str(monster.getHealth()))
+        slowPrint("The {}'s health is now {}".format(monster.getName(), monster.getHealth()))
         
     def passTurn(self):
         slowPrint("You pass your turn.")
+
     def info(self):
-        print("Name: {}".format(self.getName()))
-        print("Health: {}".format(self.getHealth()))
-        print("Max Health: {}".format(self.getMaxHealth()))
-        print("Mana: {}".format(self.getMana()))
-        print("Max Mana: {}".format(self.getMana()))
-        print("Attack: {}".format(self.getAttack()))
-        print("     Slash: 1d6 + base | Costs 0 mana")
-        print("     Slam: 1d8 + base | Costs 5 mana")
-        print("Defense: {}".format(self.getDefense()))
-        print("Gold: {}".format(self.getGold()))
+        slowPrint("Name: {}".format(self.getName()))
+        slowPrint("Health: {}".format(self.getHealth()))
+        slowPrint("Max Health: {}".format(self.getMaxHealth()))
+        slowPrint("Mana: {}".format(self.getMana()))
+        slowPrint("Max Mana: {}".format(self.getMana()))
+        slowPrint("Attack: {}".format(self.getAttack()))
+        slowPrint("     Slash: 1d6 + base | Costs 0 mana")
+        slowPrint("     Slam: 1d8 + base | Costs 5 mana")
+        slowPrint("Defense: {}".format(self.getDefense()))
+        slowPrint("Gold: {}".format(self.getGold()))
         
 
   

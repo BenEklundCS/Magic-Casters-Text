@@ -8,7 +8,7 @@ def introScene():
     slowPrint("Please enter your name: ")
     name = input()
     player = Player(name, 100, 100, 50, 50, 30, 0, 100)  # name, health, maxHealth, mana, maxMana, attack, defense
-    slowPrint("Hi " + str(player.getName()) + ", it is a pleasure to meet you!")
+    slowPrint("Hi {}, it is a pleasure to meet you!".format(player.getName()))
     slowPrint("I am that handy voice in your head - here to guide you on your journey!")
     slowPrint("These lands are perilous, and there is no coming back from death.")
     slowPrint("Proceed with caution, friend.")

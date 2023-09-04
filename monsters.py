@@ -81,16 +81,17 @@ class shadowFigure(Monster):
     
     # Basic monster attack, rolls a d4 and adds the attack of the monster to it, then subtracts the player's defense.
     def normalAttack(self, player):
-        slowPrint("The " + self.getName() + " attacks you!")
+        slowPrint("The {} attacks you!".format(self.getName())) # "The monster attacks you"
         roll = d4()
         damage = roll + self.getAttack() - player.getDefense()
-        slowPrint(str(self.getName()) + " rolled a " + str(roll) + " for " + str(damage) +" total damage.")
+        slowPrint("{} rolled a {} for {} total damage.".format(self.getName(), roll, damage)) # "Monster rolled a 6 for 15 total damage."
         player.setHealth(player.getHealth() - damage)
-        slowPrint("Your health is now " + str(player.getHealth()) + "/" + str(player.getMaxHealth()) + ".")
+        slowPrint("Your health is now {}/{}.".format(player.getHealth(), player.getMaxHealth())) # "Your health is now 50/100."
 
+    # Selects an attack, placeholder that only has one option and a miss for now
     def chooseAttack(self, player):
         roll = d6()
         if roll != 1:
-            self.normalAttack(player)
+            self.normalAttack(player) 
         else:
-            slowPrint("The " + self.getName() + " missed!")
+            slowPrint("The {} missed!".format(self.getName())) # "The monster missed!"
