@@ -2,7 +2,8 @@ from player import Player
 from monsters import Monster, shadowFigure
 from functions import slowPrint, fight
 
-# Verified and working
+# Initial scene function | introScene() --> crossroadsScene(player)
+# player object is generated in introScene() with a user made name
 def introScene():
     slowPrint("Welcome to Magic Casters Text!")
     slowPrint("Please enter your name: ")
@@ -13,14 +14,16 @@ def introScene():
     slowPrint("These lands are perilous, and there is no coming back from death.")
     slowPrint("Proceed with caution, friend.")
     crossroadsScene(player)
-# Left path is under development
+
+# crossroadsScene is the hub of chapter 1
+# Boolean flags in function header to control which paths are taken
 
 def crossroadsScene(player, leftCompleted=False, rightCompleted=False, forwardCompleted=False):
     directions = ["left", "right", "forward"]
     slowPrint("You are at a crossroads, and you can choose to go down any of the four hallways. Where would you like to go?")
     userInput = ""
     while userInput not in directions:
-        slowPrint("Options: left/right/backward/forward")
+        slowPrint(f"Options: {directions}")
         userInput = input()
         # Left
         if userInput == "left" and leftCompleted == False:
@@ -38,14 +41,18 @@ def crossroadsScene(player, leftCompleted=False, rightCompleted=False, forwardCo
         elif userInput == "backward":
             slowPrint("You find that this door opens into a wall. Maybe another direction would be better?")
         else:
-                slowPrint("Please enter a valid option.")
-# This works fine
+            slowPrint("Please enter a valid option.")
+
+# Intro to shadowFigure fight | showShadowFigure(player) --> shadowFight(player)
+# Running sends you back to crossroadsScene()
+
 def showShadowFigure(player):
+    options = ["run", "fight"]
     slowPrint("You see a shadowy figure in the distance. It is approaching you.")
     slowPrint("What do you do?")
     userInput = ""
-    while userInput not in ["run", "fight"]:
-        slowPrint("Options: run/fight")
+    while userInput not in options:
+        slowPrint(f"Options: {options}")
         userInput = input()
         if userInput == "run":
             slowPrint("You run away from the shadowy figure.")
@@ -67,7 +74,16 @@ def shadowFight(player):
         )
         crossroadsScene(player, True, False, False)
     return True
-
+# Under dev
+def showSkeletons():
+    toTown()
+# Town 
+def toTown():
+    options = []
+    slowPrint("Welcome to town!")
+    userInput = ""
+    while userInput not in options:
+        slowPrint(f"Options: {options}")
 """
                                         ????????
                                            ^

@@ -34,14 +34,15 @@ def gameOver():
 
 # Fight loop
 def fight(player, monster, playerTurn):
+    options = ["slash", "slam", "info", "pass"]
     userInput = ""
     if playerTurn == False:
         monster.chooseAttack(player)
     if player.checkDeath() == True:
         gameOver()
-    while userInput not in ["slash", "slam", "pass"]:
+    while userInput not in options:
         slowPrint("It is your turn to attack.")
-        slowPrint("Options: slash/slam/info/pass")
+        slowPrint(f"Options: {options}")
         userInput = input()
         if userInput == "slash":
             player.slash(monster)
