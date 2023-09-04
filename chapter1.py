@@ -17,7 +17,6 @@ def introScene():
 
 # crossroadsScene is the hub of chapter 1
 # Boolean flags in function header to control which paths are taken
-
 def crossroadsScene(player, leftCompleted=False, rightCompleted=False, forwardCompleted=False):
     directions = ["left", "right", "forward"]
     slowPrint("You are at a crossroads, and you can choose to go down any of the four hallways. Where would you like to go?")
@@ -45,7 +44,6 @@ def crossroadsScene(player, leftCompleted=False, rightCompleted=False, forwardCo
 
 # Intro to shadowFigure fight | showShadowFigure(player) --> shadowFight(player)
 # Running sends you back to crossroadsScene()
-
 def showShadowFigure(player):
     options = ["run", "fight"]
     slowPrint("You see a shadowy figure in the distance. It is approaching you.")
@@ -62,7 +60,7 @@ def showShadowFigure(player):
             slowPrint("You fight the shadowy figure.")
             shadowFight(player)
         else:
-            slowPrint("Please enter a valid option for the adventure game.")
+            slowPrint("Please enter a valid option.")
 
 # Shadow fight troubleshooting
 def shadowFight(player):
@@ -74,16 +72,39 @@ def shadowFight(player):
         )
         crossroadsScene(player, True, False, False)
     return True
+
 # Under dev
 def showSkeletons():
     toTown()
+
 # Town 
 def toTown():
-    options = []
+    options = ["inn", "blacksmith", "armoury", "shop"]
     slowPrint("Welcome to town!")
     userInput = ""
     while userInput not in options:
         slowPrint(f"Options: {options}")
+        userInput = input()
+        if userInput == "inn":
+            inn()
+        elif userInput == "blacksmith":
+            blacksmith()
+        elif userInput == "armoury":
+            armoury()
+        elif userInput == "shop":
+            shop()
+        else:
+            slowPrint("Please enter a valid option.")
+        userInput = ""
+
+def inn():
+    return
+def blacksmith():
+    return
+def armoury():
+    return
+def shop():
+    return
 """
                                         ????????
                                            ^
@@ -91,7 +112,7 @@ def toTown():
                                       hauntedRoom (Needs Key)
                                            ^
                                            |
-shadowFight <-- showShadowFigure <-- crossroadsScene --> showSkeletons --> toTown
+shadowFight <-- showShadowFigure <-- crossroadsScene --> showSkeletons --> toTown --> inn/blacksmith/armoury/shop
                                            ^
                                            |
                                        introScene
