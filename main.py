@@ -1,6 +1,6 @@
 import time
 import sys
-from scenes import *
+from chapter1 import *
 from player import *
 from monsters import *
 

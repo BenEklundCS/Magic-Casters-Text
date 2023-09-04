@@ -14,6 +14,7 @@ def introScene():
     slowPrint("Proceed with caution, friend.")
     crossroadsScene(player)
 # Left path is under development
+
 def crossroadsScene(player, leftCompleted=False, rightCompleted=False, forwardCompleted=False):
     directions = ["left", "right", "forward"]
     slowPrint("You are at a crossroads, and you can choose to go down any of the four hallways. Where would you like to go?")
@@ -21,15 +22,19 @@ def crossroadsScene(player, leftCompleted=False, rightCompleted=False, forwardCo
     while userInput not in directions:
         slowPrint("Options: left/right/backward/forward")
         userInput = input()
+        # Left
         if userInput == "left" and leftCompleted == False:
             showShadowFigure(player)
         elif userInput == "left" and leftCompleted == True:
             slowPrint("You've already gone this way, and there's nothing left to find.")
             crossroadsScene(player, True)
+        # Right
         elif userInput == "right":
             showSkeletons()  # Not yet defined
+        # Forward
         elif userInput == "forward":
             hauntedRoom()  # Not yet defined
+        # Backward
         elif userInput == "backward":
             slowPrint("You find that this door opens into a wall. Maybe another direction would be better?")
         else:
@@ -63,5 +68,16 @@ def shadowFight(player):
         crossroadsScene(player, True, False, False)
     return True
 
-
+"""
+                                        ????????
+                                           ^
+                                           |
+                                      hauntedRoom (Needs Key)
+                                           ^
+                                           |
+shadowFight <-- showShadowFigure <-- crossroadsScene --> showSkeletons --> toTown
+                                           ^
+                                           |
+                                       introScene
+"""
 
