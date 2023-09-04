@@ -2,8 +2,10 @@ import time
 import random
 import sys
 
-
 # Dice
+def d2():
+    return random.randint(1, 2)
+
 def d4():
     return random.randint(1, 4)
 

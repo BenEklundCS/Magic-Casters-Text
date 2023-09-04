@@ -1,6 +1,7 @@
 from player import Player
 from monsters import Monster, shadowFigure
 from functions import slowPrint, fight
+from town import *
 
 # Initial scene function | introScene() --> crossroadsScene(player)
 # player object is generated in introScene() with a user made name
@@ -77,34 +78,6 @@ def shadowFight(player):
 def showSkeletons():
     toTown()
 
-# Town 
-def toTown():
-    options = ["inn", "blacksmith", "armoury", "shop"]
-    slowPrint("Welcome to town!")
-    userInput = ""
-    while userInput not in options:
-        slowPrint(f"Options: {options}")
-        userInput = input()
-        if userInput == "inn":
-            inn()
-        elif userInput == "blacksmith":
-            blacksmith()
-        elif userInput == "armoury":
-            armoury()
-        elif userInput == "shop":
-            shop()
-        else:
-            slowPrint("Please enter a valid option.")
-        userInput = ""
-
-def inn():
-    return
-def blacksmith():
-    return
-def armoury():
-    return
-def shop():
-    return
 """
                                         ????????
                                            ^
