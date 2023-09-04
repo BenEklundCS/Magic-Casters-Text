@@ -57,29 +57,7 @@ class Monster:
             return True
         else:
             return False
-      
-# Goblin class inherits from monster class
-class Goblin(Monster):
-    def __init__(self, name, health, mana, attack, defense, gold):
-        super().__init__(name, health, mana, attack, defense, gold)
-        self.name = "Goblin"
-        self.health = 50
-        self.mana = 0
-        self.attack = 10
-        self.defense = 5
-        self.gold = 10
-    
-class shadowFigure(Monster):
-    def __init__(self, name, health, mana, attack, defense, gold):
-        super().__init__(name, health, mana, attack, defense, gold)
-        self.name = "Shadowy Figure"
-        self.health = 100
-        self.mana = 0
-        self.attack = 15
-        self.defense = 5
-        self.gold = 50
-    
-    # Basic monster attack, rolls a d4 and adds the attack of the monster to it, then subtracts the player's defense.
+        # Basic monster attack, rolls a d4 and adds the attack of the monster to it, then subtracts the player's defense.
     def normalAttack(self, player):
         slowPrint("The {} attacks you!".format(self.getName())) # "The monster attacks you"
         roll = d4()
@@ -95,3 +73,25 @@ class shadowFigure(Monster):
             self.normalAttack(player) 
         else:
             slowPrint("The {} missed!".format(self.getName())) # "The monster missed!"
+      
+# Goblin class inherits from monster class
+class Goblin(Monster):
+    def __init__(self, name, health, mana, attack, defense, gold):
+        super().__init__(name, health, mana, attack, defense, gold)
+        self.name = "Goblin"
+        self.health = 20
+        self.mana = 0
+        self.attack = 5
+        self.defense = 0
+        self.gold = 10
+
+# shadowFigure class inherits from monster class
+class shadowFigure(Monster):
+    def __init__(self, name, health, mana, attack, defense, gold):
+        super().__init__(name, health, mana, attack, defense, gold)
+        self.name = "Shadowy Figure"
+        self.health = 40
+        self.mana = 0
+        self.attack = 8
+        self.defense = 5
+        self.gold = 50

@@ -1,5 +1,5 @@
 # Player class for MagicCasters
-from functions import slowPrint, d8, d6
+from functions import slowPrint, d8, d6, printAttack
 from monsters import Monster
 
 class Player:
@@ -12,6 +12,18 @@ class Player:
         self.attack = attack
         self.defense = defense
         self.gold = gold
+        #self.actions = {"slash":True, "slam":True, "info":True, "pass":True} unlockable actions over time by building "options" from the key and values of this variable
+        self.progress = { # Solution to global tracking of progress for now
+                        "CH1":
+                            {
+                            "crossroadsScene":
+                                {
+                                "leftCompleted":False, # Shadow Figure
+                                "rightCompleted":False, # Goblin Encounter
+                                "forwardCompleted":False # puzzle
+                                }
+                            }
+                        }
         
     # Setters
     def setName(self, name):
@@ -60,39 +72,40 @@ class Player:
         return True
       else:
         return False
+
+    # Player actions
+
     # Attacks
-  
+    # Slash attack, no mana but only 1d6 + base
+
     def slash(self, monster):
         slowPrint("You slash the {}.".format(monster.getName()))
         roll = d6()
-        damage = roll + self.getAttack() - monster.getDefense()
-        slowPrint("You rolled a {} for your slash attack for {} damage.".format(roll, damage))
-        monster.setHealth(monster.getHealth() - damage)
-        slowPrint("The {}'s health is now {}".format(monster.getName(), monster.getHealth()))
+        printAttack(self, monster, roll)
         
+    # Slam attack, costs mana for 2d8 + base
     def slam(self, monster):
         self.setMana(self.getMana() - 5)
         slowPrint("You slam the {} {}/{} mana left.".format(monster.getName(), self.getMana(), self.getMaxMana()))
-        roll = d8()
-        damage = roll + self.getAttack() - monster.getDefense()
-        slowPrint("You rolled a {} for your slam attack for {} damage.".format(roll, damage))
-        monster.setHealth(monster.getHealth() - damage)
-        slowPrint("The {}'s health is now {}".format(monster.getName(), monster.getHealth()))
-        
+        roll = d8()+d8()
+        printAttack(self, monster, roll)
+
+    # Utility
+    # Function to skip turn if needed
     def passTurn(self):
         slowPrint("You pass your turn.")
-
+        
+    # Info will be called from any player input to print all current stats
     def info(self):
         slowPrint("Name: {}".format(self.getName()))
-        slowPrint("Health: {}".format(self.getHealth()))
-        slowPrint("Max Health: {}".format(self.getMaxHealth()))
-        slowPrint("Mana: {}".format(self.getMana()))
-        slowPrint("Max Mana: {}".format(self.getMana()))
+        slowPrint("Health: {}/{}".format(self.getHealth(), self.getMaxHealth()))
+        slowPrint("Mana: {}/{}".format(self.getMana(), self.getMaxMana()))
         slowPrint("Attack: {}".format(self.getAttack()))
         slowPrint("     Slash: 1d6 + base | Costs 0 mana")
         slowPrint("     Slam: 1d8 + base | Costs 5 mana")
         slowPrint("Defense: {}".format(self.getDefense()))
         slowPrint("Gold: {}".format(self.getGold()))
+     
         
 
   

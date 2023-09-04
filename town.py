@@ -1,31 +1,11 @@
 from functions import slowPrint
 from player import *
 
-# Town 
-def toTown():
-    options = ["inn", "blacksmith", "armoury", "shop"]
-    slowPrint("Welcome to town!")
-    userInput = ""
-    while userInput not in options:
-        slowPrint(f"Options: {options}")
-        userInput = input()
-        if userInput == "inn":
-            inn()
-        elif userInput == "blacksmith":
-            blacksmith()
-        elif userInput == "armoury":
-            armoury()
-        elif userInput == "shop":
-            shop()
-        else:
-            slowPrint("Please enter a valid option.")
-        userInput = ""
-
-def inn():
-    slowPrint("Dave (Innkeeper): Hi {}, welcome to our humble inn!".format(player.getName()))
-def blacksmith():
-    slowPrint("Quinn (Blacksmith): Welcome to my blacksmithing shop {}!".format(player.getName()))
-def armoury():
-    slowPrint("Shelly (Armourer): Welcome to my armoury {}!".format(player.getName()))
-def shop():
-    return
+def inn(player):
+    slowPrint("Dave (Innkeeper): Hi {}, welcome to our humble inn!\n Here you can spend some coin to stay the night and rest up.".format(player.getName()))
+def blacksmith(player):
+    slowPrint("Quinn (Blacksmith): Welcome to my blacksmithing shop {}!\n I'm willing to upgrade your attacks if you have gold to spare".format(player.getName()))
+def armoury(player):
+    slowPrint("Shelly (Armourer): Welcome to my armoury {}!\n Your armor could use a tune up if you've got the gold to spare.".format(player.getName()))
+def shop(player):
+    slowPrint("Mary (Shopkeep): Welcome to my shop {}!\n You can buy stuff here.".format(player.getName()))

@@ -38,31 +38,49 @@ def gameOver():
 def fight(player, monster, playerTurn):
     options = ["slash", "slam", "info", "pass"]
     userInput = ""
+    # If monsters turn, attack the player
     if playerTurn == False:
         monster.chooseAttack(player)
+    # If the player is dead, call gameOver
     if player.checkDeath() == True:
         gameOver()
     while userInput not in options:
         slowPrint("It is your turn to attack.")
         slowPrint(f"Options: {options}")
         userInput = input()
+        # Possible user attacks
         if userInput == "slash":
             player.slash(monster)
         elif userInput == "slam":
             player.slam(monster)
+        # User utility options
         elif userInput == "info":
             player.info()
+            userInput = ""
             continue
         elif userInput == "pass":
             player.passTurn()
+        # Error handling
         else:
             slowPrint("Invalid option. Please enter a valid attack!")
             continue
+        # Did player action kill the monster?
         if monster.checkDeath(player) == True:
             return True
+        # Attack the player
         monster.chooseAttack(player)
+        # Did the player die?
         if player.checkDeath() == True:
             gameOver()
+        # Reset for next iteration
         userInput = ""
 
     return False
+
+def printAttack(self, monster, roll):
+    rawDamage = roll + self.getAttack()
+    totalDamage = rawDamage - monster.getDefense()
+    slowPrint("You rolled a {} for your slam attack for {} damage.".format(roll, rawDamage))
+    slowPrint("{} absorbed {} damage, for {} total damage.".format(monster.getName(), monster.getDefense(), totalDamage))
+    monster.setHealth(monster.getHealth() - totalDamage)
+    slowPrint("The {}'s health is now {}".format(monster.getName(), monster.getHealth()))
