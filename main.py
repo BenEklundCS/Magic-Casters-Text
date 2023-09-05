@@ -1,9 +1,9 @@
 #import time
 #import sys
-from chapter1 import introScene, shadowFight
+from chapter1 import intro_scene
 from player import *
 from monsters import *
 
 def main():
-    introScene()
+    intro_scene()
 main()

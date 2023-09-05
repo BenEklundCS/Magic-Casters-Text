@@ -1,5 +1,5 @@
 # Player class for MagicCasters
-from functions import slowPrint, d8, d6, printAttack
+from functions import slow_print, d8, d6, print_attack
 from monsters import Monster
 
 class Player:
@@ -68,7 +68,7 @@ class Player:
     # Functions
     def checkDeath(self):
       if self.getHealth() <= 0:
-        slowPrint("You have died.")
+        slow_print("You have died.")
         return True
       else:
         return False
@@ -79,32 +79,32 @@ class Player:
     # Slash attack, no mana but only 1d6 + base
 
     def slash(self, monster):
-        slowPrint("You slash the {}.".format(monster.getName()))
+        slow_print("You slash the {}.".format(monster.getName()))
         roll = d6()
-        printAttack(self, monster, roll)
+        print_attack(self, monster, roll)
         
     # Slam attack, costs mana for 2d8 + base
     def slam(self, monster):
         self.setMana(self.getMana() - 5)
-        slowPrint("You slam the {} {}/{} mana left.".format(monster.getName(), self.getMana(), self.getMaxMana()))
+        slow_print("You slam the {} {}/{} mana left.".format(monster.getName(), self.getMana(), self.getMaxMana()))
         roll = d8()+d8()
-        printAttack(self, monster, roll)
+        print_attack(self, monster, roll)
 
     # Utility
     # Function to skip turn if needed
     def passTurn(self):
-        slowPrint("You pass your turn.")
+        slow_print("You pass your turn.")
         
     # Info will be called from any player input to print all current stats
     def info(self):
-        slowPrint("Name: {}".format(self.getName()))
-        slowPrint("Health: {}/{}".format(self.getHealth(), self.getMaxHealth()))
-        slowPrint("Mana: {}/{}".format(self.getMana(), self.getMaxMana()))
-        slowPrint("Attack: {}".format(self.getAttack()))
-        slowPrint("     Slash: 1d6 + base | Costs 0 mana")
-        slowPrint("     Slam: 1d8 + base | Costs 5 mana")
-        slowPrint("Defense: {}".format(self.getDefense()))
-        slowPrint("Gold: {}".format(self.getGold()))
+        slow_print("Name: {}".format(self.getName()))
+        slow_print("Health: {}/{}".format(self.getHealth(), self.getMaxHealth()))
+        slow_print("Mana: {}/{}".format(self.getMana(), self.getMaxMana()))
+        slow_print("Attack: {}".format(self.getAttack()))
+        slow_print("     Slash: 1d6 + base | Costs 0 mana")
+        slow_print("     Slam: 1d8 + base | Costs 5 mana")
+        slow_print("Defense: {}".format(self.getDefense()))
+        slow_print("Gold: {}".format(self.getGold()))
      
         
 

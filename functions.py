@@ -19,7 +19,7 @@ def d20():
      return random.randint(1, 20)
 
 # Other stuff
-def slowPrint(text):
+def slow_print(text):
   # take text and print it character by character
     for character in text:
         sys.stdout.write(character)
@@ -28,37 +28,37 @@ def slowPrint(text):
     print()
 
 # Quick method to end the game
-def gameOver():
-    slowPrint("You have lost! The kingdom is doomed!")
-    slowPrint("GAME OVER")
+def game_over():
+    slow_print("You have lost! The kingdom is doomed!")
+    slow_print("GAME OVER")
     input()
     exit()
 
 # Fight loop
 def fight(player, monster, playerTurn):
     options = ["slash", "slam", "info", "pass"]
-    userInput = ""
+    user_input = ""
     # If monsters turn, attack the player
     if playerTurn == False:
         monster.chooseAttack(player)
     # If the player is dead, call gameOver
     if player.checkDeath() == True:
-        gameOver()
-    while userInput not in options:
-        slowPrint("It is your turn to attack.")
-        slowPrint(f"Options: {options}")
-        userInput = input()
+        game_over()
+    while user_input not in options:
+        slow_print("It is your turn to attack.")
+        slow_print(f"Options: {options}")
+        user_input = input()
         # Possible user attacks
-        if userInput == "slash":
+        if user_input == "slash":
             player.slash(monster)
-        elif userInput == "slam":
+        elif user_input == "slam":
             player.slam(monster)
         # User utility options
-        elif userInput == "info":
+        elif user_input == "info":
             player.info()
-            userInput = ""
+            user_input = ""
             continue
-        elif userInput == "pass":
+        elif user_input == "pass":
             player.passTurn()
         # Error handling
         else:
@@ -71,16 +71,16 @@ def fight(player, monster, playerTurn):
         monster.chooseAttack(player)
         # Did the player die?
         if player.checkDeath() == True:
-            gameOver()
+            game_over()
         # Reset for next iteration
-        userInput = ""
+        user_input = ""
 
     return False
 
-def printAttack(self, monster, roll):
-    rawDamage = roll + self.getAttack()
-    totalDamage = rawDamage - monster.getDefense()
-    slowPrint("You rolled a {} for your slam attack for {} damage.".format(roll, rawDamage))
-    slowPrint("{} absorbed {} damage, for {} total damage.".format(monster.getName(), monster.getDefense(), totalDamage))
-    monster.setHealth(monster.getHealth() - totalDamage)
-    slowPrint("The {}'s health is now {}".format(monster.getName(), monster.getHealth()))
+def print_attack(self, monster, roll):
+    raw_damage = roll + self.getAttack()
+    total_damage = raw_damage - monster.getDefense()
+    slow_print("You rolled a {} for your slam attack for {} damage.".format(roll, raw_damage))
+    slow_print("{} absorbed {} damage, for {} total damage.".format(monster.getName(), monster.getDefense(), total_damage))
+    monster.setHealth(monster.getHealth() - total_damage)
+    slow_print("The {}'s health is now {}".format(monster.getName(), monster.getHealth()))
