@@ -35,14 +35,14 @@ def game_over():
     exit()
 
 # Fight loop
-def fight(player, monster, playerTurn):
+def fight(player, monster, player_turn):
     options = ["slash", "slam", "info", "pass"]
     user_input = ""
     # If monsters turn, attack the player
-    if playerTurn == False:
-        monster.chooseAttack(player)
+    if player_turn == False:
+        monster.choose_attack(player)
     # If the player is dead, call gameOver
-    if player.checkDeath() == True:
+    if player.check_death() == True:
         game_over()
     while user_input not in options:
         slow_print("It is your turn to attack.")
@@ -59,18 +59,18 @@ def fight(player, monster, playerTurn):
             user_input = ""
             continue
         elif user_input == "pass":
-            player.passTurn()
+            player.pass_turn()
         # Error handling
         else:
-            slowPrint("Invalid option. Please enter a valid attack!")
+            slow_print("Invalid option. Please enter a valid attack!")
             continue
         # Did player action kill the monster?
-        if monster.checkDeath(player) == True:
+        if monster.check_death(player) == True:
             return True
         # Attack the player
-        monster.chooseAttack(player)
+        monster.choose_attack(player)
         # Did the player die?
-        if player.checkDeath() == True:
+        if player.check_death() == True:
             game_over()
         # Reset for next iteration
         user_input = ""
@@ -78,9 +78,9 @@ def fight(player, monster, playerTurn):
     return False
 
 def print_attack(self, monster, roll):
-    raw_damage = roll + self.getAttack()
-    total_damage = raw_damage - monster.getDefense()
+    raw_damage = roll + self.attack
+    total_damage = raw_damage - monster.defense
     slow_print("You rolled a {} for your slam attack for {} damage.".format(roll, raw_damage))
-    slow_print("{} absorbed {} damage, for {} total damage.".format(monster.getName(), monster.getDefense(), total_damage))
-    monster.setHealth(monster.getHealth() - total_damage)
-    slow_print("The {}'s health is now {}".format(monster.getName(), monster.getHealth()))
+    slow_print("{} absorbed {} damage, for {} total damage.".format(monster.name, monster.defense, total_damage))
+    monster.health = monster.health - total_damage
+    slow_print("The {}'s health is now {}".format(monster.name, monster.health))

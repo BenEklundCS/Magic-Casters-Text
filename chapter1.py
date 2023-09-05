@@ -12,7 +12,7 @@ def intro_scene():
     name = input()
     # name, health, maxHealth, mana, maxMana, attack, defense, gold
     player = Player(name, 30, 30, 50, 50, 8, 0, 100)
-    slow_print("Hi {}, it is a pleasure to meet you!".format(player.getName()))
+    slow_print("Hi {}, it is a pleasure to meet you!".format(player.name))
     slow_print(
         "I am that handy voice in your head - here to guide you on your journey!")
     slow_print("These lands are perilous, and there is no coming back from death.")
@@ -32,17 +32,17 @@ def crossroads_scene(player):
         user_input = input()
 
         # Left
-        if user_input == "left" and player.progress["CH1"]["crossroadsScene"]["leftCompleted"] == False:
+        if user_input == "left" and player.progress["CH1"]["crossroads_scene"]["left_completed"] == False:
             show_shadow_figure(player)
-        elif user_input == "left" and player.progress["CH1"]["crossroadsScene"]["leftCompleted"] == True:
+        elif user_input == "left" and player.progress["CH1"]["crossroads_scene"]["left_completed"] == True:
             slow_print(
                 "You've already gone this way, and there's nothing left to find.")
             user_input = ""
 
         # Right
-        elif user_input == "right" and player.progress["CH1"]["crossroadsScene"]["rightCompleted"] == False:
+        elif user_input == "right" and player.progress["CH1"]["crossroads_scene"]["right_completed"] == False:
             goblin_fight(player)  # Not yet defined
-        elif user_input == "right" and player.progress["CH1"]["crossroadsScene"]["rightCompleted"] == True:
+        elif user_input == "right" and player.progress["CH1"]["crossroads_scene"]["right_completed"] == True:
             to_town(player)
 
         # Forward
@@ -91,7 +91,7 @@ def shadow_fight(player):
         slow_print(
             "You also find a key on the shadowy figure's body. Maybe it will be useful later?"
         )
-        player.progress["CH1"]["crossroadsScene"]["leftCompleted"] = True
+        player.progress["CH1"]["crossroads_scene"]["left_completed"] = True
         crossroads_scene(player)
     return True
 
@@ -135,20 +135,20 @@ def to_town(player):
 
 
 def inn(player):
-    slow_print("Dave (Innkeeper): Hi {}, welcome to our humble inn!\n Here you can spend some coin to stay the night and rest up.".format(player.getName()))
+    slow_print("Dave (Innkeeper): Hi {}, welcome to our humble inn!\n Here you can spend some coin to stay the night and rest up.".format(player.name))
 
 
 def blacksmith(player):
-    slow_print("Quinn (Blacksmith): Welcome to my blacksmithing shop {}!\n I'm willing to upgrade your attacks if you have gold to spare".format(player.getName()))
+    slow_print("Quinn (Blacksmith): Welcome to my blacksmithing shop {}!\n I'm willing to upgrade your attacks if you have gold to spare".format(player.name))
 
 
 def armoury(player):
-    slow_print("Shelly (Armourer): Welcome to my armoury {}!\n Your armor could use a tune up if you've got the gold to spare.".format(player.getName()))
+    slow_print("Shelly (Armourer): Welcome to my armoury {}!\n Your armor could use a tune up if you've got the gold to spare.".format(player.name))
 
 
 def shop(player):
     slow_print("Mary (Shopkeep): Welcome to my shop {}!\n You can buy stuff here.".format(
-        player.getName()))
+        player.name))
 
 
 def puzzle_room(player):
