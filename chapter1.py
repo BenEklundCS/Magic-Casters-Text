@@ -1,5 +1,5 @@
 from player import Player
-from monsters import Monster, shadowFigure, Goblin
+from monsters import shadowFigure, Goblin
 from functions import slow_print, fight
 
 # Initial scene function | introScene() --> crossroadsScene(player)
@@ -7,12 +7,13 @@ from functions import slow_print, fight
 
 
 def intro_scene():
+    """ Starting scene for CH1 """
     slow_print("Welcome to Magic Casters Text!")
     slow_print("Please enter your name: ")
     name = input()
     # name, health, maxHealth, mana, maxMana, attack, defense, gold
     player = Player(name, 30, 30, 50, 50, 8, 0, 100)
-    slow_print("Hi {}, it is a pleasure to meet you!".format(player.name))
+    slow_print(f"Hi {player.name}, it is a pleasure to meet you!")
     slow_print(
         "I am that handy voice in your head - here to guide you on your journey!")
     slow_print("These lands are perilous, and there is no coming back from death.")
@@ -32,17 +33,17 @@ def crossroads_scene(player):
         user_input = input()
 
         # Left
-        if user_input == "left" and player.progress["CH1"]["crossroads_scene"]["left_completed"] == False:
+        if user_input == "left" and player.progress["CH1"]["crossroads_scene"]["left_completed"] is False:
             show_shadow_figure(player)
-        elif user_input == "left" and player.progress["CH1"]["crossroads_scene"]["left_completed"] == True:
+        elif user_input == "left" and player.progress["CH1"]["crossroads_scene"]["left_completed"] is True:
             slow_print(
                 "You've already gone this way, and there's nothing left to find.")
             user_input = ""
 
         # Right
-        elif user_input == "right" and player.progress["CH1"]["crossroads_scene"]["right_completed"] == False:
+        elif user_input == "right" and player.progress["CH1"]["crossroads_scene"]["right_completed"] is False:
             goblin_fight(player)  # Not yet defined
-        elif user_input == "right" and player.progress["CH1"]["crossroads_scene"]["right_completed"] == True:
+        elif user_input == "right" and player.progress["CH1"]["crossroads_scene"]["right_completed"] is True:
             to_town(player)
 
         # Forward
@@ -62,6 +63,7 @@ def crossroads_scene(player):
 
 
 def show_shadow_figure(player):
+    """ Show shadowy figure """
     options = ["run", "fight"]
     slow_print("You see a shadowy figure in the distance. It is approaching you.")
     slow_print("What do you do?")
@@ -84,9 +86,10 @@ def show_shadow_figure(player):
 
 
 def shadow_fight(player):
+    """ Shadow fight on left path """
     # name, health, mana, attack, defense, gold
     monster = shadowFigure("Shadowy Figure", 50, 100, 15, 0, 50)
-    if fight(player, monster, True) == True:
+    if fight(player, monster, True) is True:
         del monster
         slow_print(
             "You also find a key on the shadowy figure's body. Maybe it will be useful later?"
@@ -99,11 +102,12 @@ def shadow_fight(player):
 
 
 def goblin_fight(player):
+    """ Goblin fight on right path """
     monster = Goblin("Gob", 25, 50, 10, 0, 100)
     slow_print("A goblin has appeared!")
-    if fight(player, monster, True) == True:
+    if fight(player, monster, True) is True:
         del monster
-        player.progress["CH1"]["crossroadsScene"]["rightCompleted"] = True
+        player.progress["CH1"]["crossroads_scene"]["right_completed"] = True
         slow_print(
             "You see the light of a town up ahead, and decide to continue down the trail towards it.")
         to_town(player)
@@ -111,6 +115,7 @@ def goblin_fight(player):
 
 
 def to_town(player):
+    """ Head to town hub """
     options = ["inn", "blacksmith", "armoury", "shop", "info", "leave"]
     slow_print("Welcome to town!")
     user_input = ""
@@ -135,23 +140,27 @@ def to_town(player):
 
 
 def inn(player):
-    slow_print("Dave (Innkeeper): Hi {}, welcome to our humble inn!\n Here you can spend some coin to stay the night and rest up.".format(player.name))
+    """ Town inn """
+    slow_print(f"Dave (Innkeeper): Hi {player.name}, welcome to our humble inn!\n Here you can spend some coin to stay the night and rest up.")
 
 
 def blacksmith(player):
-    slow_print("Quinn (Blacksmith): Welcome to my blacksmithing shop {}!\n I'm willing to upgrade your attacks if you have gold to spare".format(player.name))
+    """ Town blacksmith """
+    slow_print(f"Quinn (Blacksmith): Welcome to my blacksmithing shop {player.name}!\n I'm willing to upgrade your attacks if you have gold to spare")
 
 
 def armoury(player):
-    slow_print("Shelly (Armourer): Welcome to my armoury {}!\n Your armor could use a tune up if you've got the gold to spare.".format(player.name))
+    """ Town armoury """
+    slow_print(f"Shelly (Armourer): Welcome to my armoury {player.name}!\n Your armor could use a tune up if you've got the gold to spare.")
 
 
 def shop(player):
-    slow_print("Mary (Shopkeep): Welcome to my shop {}!\n You can buy stuff here.".format(
-        player.name))
+    """ Town shop """
+    slow_print(f"Mary (Shopkeep): Welcome to my shop {player.name}!\n You can buy stuff here.")
 
 
 def puzzle_room(player):
+    """ Puzzle on up path """
     slow_print("The puzzle is not ready yet!")
     crossroads_scene(player)
 
