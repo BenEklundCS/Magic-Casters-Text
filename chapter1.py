@@ -163,17 +163,3 @@ def puzzle_room(player):
     """ Puzzle on up path """
     slow_print("The puzzle is not ready yet!")
     crossroads_scene(player)
-
-
-"""
-                                        ????????
-                                           ^
-                                           |
-                                      puzzleRoom (Needs Key) 
-                                           ^
-                                           |
-shadowFight <-- showShadowFigure <-- crossroadsScene --> goblinFight --> toTown --> inn/blacksmith/armoury/shop
-                                           ^
-                                           |
-                                       introScene
-"""

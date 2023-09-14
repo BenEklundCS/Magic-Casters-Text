@@ -16,12 +16,12 @@ def d6():
     return random.randint(1, 6)
 
 def d8():
-     """ d8 die"""
-     return random.randint(1, 8)
+    """ d8 die"""
+    return random.randint(1, 8)
 
 def d20():
-     """ d20 die """
-     return random.randint(1, 20)
+    """ d20 die """
+    return random.randint(1, 20)
 
 # Other stuff
 def slow_print(text):

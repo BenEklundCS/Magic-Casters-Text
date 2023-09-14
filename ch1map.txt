@@ -1,0 +1,12 @@
+"""
+                                        ????????
+                                           ^
+                                           |
+                                      puzzleRoom (Needs Key) 
+                                           ^
+                                           |
+shadowFight <-- showShadowFigure <-- crossroadsScene --> goblinFight --> toTown --> inn/blacksmith/armoury/shop
+                                           ^
+                                           |
+                                       introScene
+"""
