@@ -1,6 +1,8 @@
+""" Module imports """
 from player import Player
-from monsters import shadowFigure, Goblin
+from monsters import ShadowFigure, Goblin
 from functions import slow_print, fight
+from puzzles import word_puzzle
 
 # Initial scene function | introScene() --> crossroadsScene(player)
 # player object is generated in introScene() with a user made name
@@ -88,7 +90,7 @@ def show_shadow_figure(player):
 def shadow_fight(player):
     """ Shadow fight on left path """
     # name, health, mana, attack, defense, gold
-    monster = shadowFigure("Shadowy Figure", 50, 100, 15, 0, 50)
+    monster = ShadowFigure("Shadowy Figure", 50, 100, 15, 0, 50)
     if fight(player, monster, True) is True:
         del monster
         slow_print(
@@ -161,5 +163,6 @@ def shop(player):
 
 def puzzle_room(player):
     """ Puzzle on up path """
-    slow_print("The puzzle is not ready yet!")
+    if word_puzzle() is True:
+        print("You've completed the puzzle!")
     crossroads_scene(player)

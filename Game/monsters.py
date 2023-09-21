@@ -1,3 +1,4 @@
+""" Functions module """
 from functions import slow_print, d4, d6
 
 
@@ -45,7 +46,7 @@ class Goblin(Monster):
         super().__init__("Goblin", 20, 0, 5, 0, 10)
 
 # shadowFigure class inherits from monster class
-class shadowFigure(Monster):
+class ShadowFigure(Monster):
     """ Shadowy Figure """
     def __init__(self, name, health, mana, attack, defense, gold):
         super().__init__("Shadowy Figure", 40, 0, 8, 5, 50)

@@ -1,3 +1,4 @@
+""" Chapter 1 module """
 from chapter1 import intro_scene
 
 def main():

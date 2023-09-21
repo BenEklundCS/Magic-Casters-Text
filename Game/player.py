@@ -1,6 +1,5 @@
-# Player class for MagicCasters
+""" Functions used for player class """
 from functions import slow_print, d8, d6, print_attack
-#from monsters import Monster
 
 class Player:
     """ Player class definition """
@@ -67,9 +66,3 @@ class Player:
         slow_print("     Slam: 1d8 + base | Costs 5 mana")
         slow_print(f"Defense: {self.defense}")
         slow_print(f"Gold: {self.gold}")
-     
-        
-
-  
-    
-    

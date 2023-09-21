@@ -1,3 +1,4 @@
+""" Modules for time.sleep(), random.randint(), and sys.stdout.write()/flush()"""
 import time
 import random
 import sys
