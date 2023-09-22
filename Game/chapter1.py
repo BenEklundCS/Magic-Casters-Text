@@ -16,8 +16,7 @@ def intro_scene():
     # name, health, maxHealth, mana, maxMana, attack, defense, gold
     player = Player(name, 30, 30, 50, 50, 8, 0, 100)
     slow_print(f"Hi {player.name}, it is a pleasure to meet you!")
-    slow_print(
-        "I am that handy voice in your head - here to guide you on your journey!")
+    slow_print("I am that handy voice in your head - here to guide you on your journey!")
     slow_print("These lands are perilous, and there is no coming back from death.")
     slow_print("Proceed with caution, friend.")
     crossroads_scene(player)
