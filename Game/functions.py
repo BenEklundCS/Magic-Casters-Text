@@ -27,6 +27,7 @@ def d20():
 # Other stuff
 def slow_print(text):
     """ take text and print it character by character """
+
     for character in text:
         sys.stdout.write(character)
         sys.stdout.flush()
@@ -36,6 +37,7 @@ def slow_print(text):
 # Quick method to end the game
 def game_over():
     """ End game """
+
     slow_print("You have lost! The kingdom is doomed!")
     slow_print("GAME OVER")
     input()
@@ -44,6 +46,7 @@ def game_over():
 # Fight loop
 def fight(player, monster, player_turn):
     """ Fight loop """
+
     options = ["slash", "slam", "info", "pass"]
     user_input = ""
     # If monsters turn, attack the player
@@ -82,10 +85,10 @@ def fight(player, monster, player_turn):
             game_over()
         # Reset for next iteration
         user_input = ""
-
     return False
 
 def print_attack(self, monster, roll):
+    
     """ Print player attack """
     raw_damage = roll + self.attack
     total_damage = raw_damage - monster.defense
