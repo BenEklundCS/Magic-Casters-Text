@@ -108,6 +108,6 @@ def clear_terminal_line():
     sys.stdout.write("\033[F") # back to previous line
     sys.stdout.write("\033[K") # clear line
 
-def check_roll(roll, type):
+def check_roll(roll, check):
     """ Formats roll and type into slow printed f-string """
-    slow_print(f"... you roll a {roll} for {type}...")
+    slow_print(f"... you roll a {roll} for {check}...")

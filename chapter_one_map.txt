@@ -6,7 +6,7 @@
                                            ^
                                            |
 shadowFight <-- showShadowFigure <-- crossroadsScene --> goblinFight --> toTown --> inn/blacksmith/armoury/shop
-                                           ^
+    (Key)                                  ^
                                            |
                                        introScene
 """
