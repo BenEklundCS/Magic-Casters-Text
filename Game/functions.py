@@ -1,27 +1,27 @@
-""" Modules for time.sleep(), random.randint(), and sys.stdout.write()/flush()"""
+""" Modules """
 import time
 import random
 import sys
 import string # used for string.ascii_letters
 
 # Dice
-def d2():
+def roll_d2():
     """ d2 die """
     return random.randint(1, 2)
 
-def d4():
+def roll_d4():
     """ d4 die """
     return random.randint(1, 4)
 
-def d6():
+def roll_d6():
     """ d6 die """
     return random.randint(1, 6)
 
-def d8():
+def roll_d8():
     """ d8 die"""
     return random.randint(1, 8)
 
-def d20():
+def roll_d20():
     """ d20 die """
     return random.randint(1, 20)
 
@@ -95,16 +95,19 @@ def fight(player, monster, player_turn):
     return False
 
 def print_attack(self, monster, roll):
-    
     """ Print player attack """
     raw_damage = roll + self.attack
     total_damage = raw_damage - monster.defense
     slow_print(f"You rolled a {roll} for your slam attack for {raw_damage} damage.")
-    slow_print(f"{monster.name} absorbed {monster.defense} damage, for {total_damage} total damage.")
+    slow_print(f"{monster.name} blocked {monster.defense} damage, for {total_damage} total damage.")
     monster.health = monster.health - total_damage
     slow_print(f"The {monster.name}'s health is now {monster.health}")
 
 def clear_terminal_line():
+    """ uses sys to move up a line and clear """
     sys.stdout.write("\033[F") # back to previous line
     sys.stdout.write("\033[K") # clear line
-    
+
+def check_roll(roll, type):
+    """ Formats roll and type into slow printed f-string """
+    slow_print(f"... you roll a {roll} for {type}...")

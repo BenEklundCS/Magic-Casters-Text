@@ -1,5 +1,5 @@
 """ Functions module """
-from functions import slow_print, d4, d6
+from functions import slow_print, roll_d4, roll_d6
 
 class Monster:
     """ Monster class """
@@ -26,7 +26,7 @@ class Monster:
         """ Basic monster attack, rolls a d4 and adds the attack of the monster to it, then subtracts the player's defense. """
 
         slow_print(f"The {self.name} attacks you!") # "The monster attacks you"
-        roll = d4()
+        roll = roll_d4()
         damage = roll + self.attack - player.defense
         slow_print(f"{self.name} rolled a {roll} for {damage}")
         player.health = player.health - damage
@@ -36,7 +36,7 @@ class Monster:
     def choose_attack(self, player):
         """ Choose a random attack, or miss """
 
-        roll = d6()
+        roll = roll_d6()
         if roll != 1:
             self.normal_attack(player) 
         else:

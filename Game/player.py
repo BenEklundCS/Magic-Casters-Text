@@ -1,5 +1,5 @@
 """ Functions used for player class """
-from functions import slow_print, d8, d6, print_attack
+from functions import slow_print, roll_d8, roll_d6, print_attack
 
 class Player:
     """ Player class definition """
@@ -38,15 +38,15 @@ class Player:
     def slash(self, monster):
         """ Slash attack for 1d6 """
         slow_print(f"You slash the {monster.name}.")
-        roll = d6()
+        roll = roll_d6()
         print_attack(self, monster, roll)
-        
+
     # Slam attack, costs mana for 2d8 + base
     def slam(self, monster):
         """ Slam attack for 2d8 and costs 5 mana """
         self.mana = self.mana - 5
         slow_print(f"You slam the {monster.name} {self.mana}/{self.max_mana}")
-        roll = d8()+d8()
+        roll = roll_d8()+roll_d8()
         print_attack(self, monster, roll)
 
     # Utility
@@ -54,7 +54,7 @@ class Player:
     def pass_turn(self):
         """ Pass turn (do nothing) """
         slow_print("You pass your turn.")
-        
+
     # Info will be called from any player input to print all current stats
     def info(self):
         """ Prints all player class info """

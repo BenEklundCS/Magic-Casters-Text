@@ -8,7 +8,7 @@ from puzzles import memory_puzzle
 # player object is generated in introScene() with a user made name
 
 def intro_scene():
-    """ Starting scene for CH1 """
+    """ Starting scene for chapter one """
     slow_print("Welcome to Magic Casters Text!")
     slow_print("Please enter your name: ")
     name = input()
@@ -24,13 +24,13 @@ def intro_scene():
 # Boolean flags in function header to control which paths are taken
 
 def crossroads_scene(player):
+    """ Center of chapter one """
     directions = ["left", "right", "forward", "backward"]
-    slow_print("You are at a crossroads, and you can choose to go down any of the four hallways. Where would you like to go?")
+    slow_print("You are at a crossroads, and there are four paths open. Which do you choose?")
     user_input = ""
     while user_input not in directions:
         slow_print(f"Options: {directions}")
         user_input = input()
-
         # Left
         if user_input == "left" and player.progress["CH1"]["crossroads_scene"]["left_completed"] is False:
             show_shadow_figure(player)
