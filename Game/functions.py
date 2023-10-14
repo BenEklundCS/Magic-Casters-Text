@@ -2,6 +2,7 @@
 import time
 import random
 import sys
+import string # used for string.ascii_letters
 
 # Dice
 def d2():
@@ -23,6 +24,12 @@ def d8():
 def d20():
     """ d20 die """
     return random.randint(1, 20)
+
+# Random letter
+
+def random_letter():
+    """ Returns a random letter in the alphabet """
+    return random.choice(string.ascii_letters)
 
 # Other stuff
 def slow_print(text):

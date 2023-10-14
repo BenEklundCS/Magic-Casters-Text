@@ -2,11 +2,10 @@
 from player import Player
 from monsters import ShadowFigure, Goblin
 from functions import slow_print, fight
-from puzzles import word_puzzle
+from puzzles import memory_puzzle
 
 # Initial scene function | introScene() --> crossroadsScene(player)
 # player object is generated in introScene() with a user made name
-
 
 def intro_scene():
     """ Starting scene for CH1 """
@@ -23,7 +22,6 @@ def intro_scene():
 
 # crossroadsScene is the hub of chapter 1
 # Boolean flags in function header to control which paths are taken
-
 
 def crossroads_scene(player):
     directions = ["left", "right", "forward", "backward"]
@@ -60,8 +58,6 @@ def crossroads_scene(player):
             slow_print("Please enter a valid option.")
 
 # Intro to shadowFigure fight | showShadowFigure(player) --> shadowFight(player)
-# Running sends you back to crossroadsScene()
-
 
 def show_shadow_figure(player):
     """ Show shadowy figure """
@@ -83,15 +79,11 @@ def show_shadow_figure(player):
             slow_print("Please enter a valid option.")
             user_input = ""
 
-# Shadow fight troubleshooting
-
-
 def shadow_fight(player):
     """ Shadow fight on left path """
     # name, health, mana, attack, defense, gold
     monster = ShadowFigure("Shadowy Figure", 50, 100, 15, 0, 50)
     if fight(player, monster, True) is True:
-        del monster
         slow_print(
             "You also find a key on the shadowy figure's body. Maybe it will be useful later?"
         )
@@ -99,21 +91,16 @@ def shadow_fight(player):
         crossroads_scene(player)
     return True
 
-# Under dev
-
-
 def goblin_fight(player):
     """ Goblin fight on right path """
     monster = Goblin("Gob", 25, 50, 10, 0, 100)
     slow_print("A goblin has appeared!")
     if fight(player, monster, True) is True:
-        del monster
         player.progress["CH1"]["crossroads_scene"]["right_completed"] = True
         slow_print(
             "You see the light of a town up ahead, and decide to continue down the trail towards it.")
         to_town(player)
     return True
-
 
 def to_town(player):
     """ Head to town hub """
@@ -139,7 +126,6 @@ def to_town(player):
             slow_print("Please enter a valid option.")
         user_input = ""
 
-
 def inn(player):
     """ Town inn """
     slow_print(f"Dave (Innkeeper): Hi {player.name}, welcome to our humble inn!\n Here you can spend some coin to stay the night and rest up.")
@@ -162,6 +148,6 @@ def shop(player):
 
 def puzzle_room(player):
     """ Puzzle on up path """
-    if word_puzzle() is True:
+    if memory_puzzle() is True:
         print("You've completed the puzzle!")
     crossroads_scene(player)

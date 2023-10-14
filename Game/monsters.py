@@ -1,7 +1,6 @@
 """ Functions module """
 from functions import slow_print, d4, d6
 
-
 class Monster:
     """ Monster class """
 
