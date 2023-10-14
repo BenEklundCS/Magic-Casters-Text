@@ -103,3 +103,8 @@ def print_attack(self, monster, roll):
     slow_print(f"{monster.name} absorbed {monster.defense} damage, for {total_damage} total damage.")
     monster.health = monster.health - total_damage
     slow_print(f"The {monster.name}'s health is now {monster.health}")
+
+def clear_terminal_line():
+    sys.stdout.write("\033[F") # back to previous line
+    sys.stdout.write("\033[K") # clear line
+    

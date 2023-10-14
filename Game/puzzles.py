@@ -1,4 +1,4 @@
-from functions import game_over, slow_print, d20, random_letter
+from functions import game_over, slow_print, d20, random_letter, clear_terminal_line
 
 def memory_puzzle():
     """ Puzzle to test the players memory, forward path on crossroads """
@@ -7,10 +7,9 @@ def memory_puzzle():
     roll = d20()
     slow_print(f"... you roll a {roll} for perception ...")
     if roll > 10:
-        slow_print("You realize this must be an ancient runic memory game - and prepare yourself for its start.")
+        slow_print("You realize this must be an ancient runic memory puzzle.")
     else:
-        slow_print("You fail to determine the meaning of this room. Maybe you can catch on in time to survive?")
-    
+        slow_print("You fail to determine the meaning of this room. Maybe you can still survive?")
     completed = False
     chars = []
     failures = 0
@@ -20,20 +19,17 @@ def memory_puzzle():
         print(letter)
         user_input = input()
         if user_input != ''.join(chars):
-            slow_print(f"That is incorrect! You have {3-failures} more tries.")
+            slow_print(f"\rThat is incorrect! You have {3-failures} more tries......................")
             failures = failures+1
             if failures == 3:
                 game_over()
             chars.clear()
         else:
-            slow_print("Correct!")
+            slow_print("\rCorrect!")
             if len(chars) == 7:
                 completed = True
+        
+        clear_terminal_line() # clear output (correct/incorrect)
+        clear_terminal_line() # clear player input
+        clear_terminal_line() # clear given letter
     return completed
-    
-
-
-   
-
-
-    
