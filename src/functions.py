@@ -38,7 +38,16 @@ def slow_print(text):
     for character in text:
         sys.stdout.write(character)
         sys.stdout.flush()
-        time.sleep(0.018)
+        time.sleep(0.025)
+    print()
+
+def slower_print(text):
+    """ take text and print it character by character """
+
+    for character in text:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.04)
     print()
 
 # Quick method to end the game

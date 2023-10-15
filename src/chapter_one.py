@@ -3,31 +3,30 @@ from player import Player
 from monsters import ShadowFigure, Goblin
 from functions import slow_print, fight
 from puzzles import memory_puzzle
+from story import intro_text_ch1, at_a_crossroads_ch1
 
 # Initial scene function | introScene() --> crossroadsScene(player)
 # player object is generated in introScene() with a user made name
 
 def intro_scene():
     """ Starting scene for chapter one """
-    slow_print("Welcome to Magic Casters Text!")
-    slow_print("Please enter your name: ")
+    slow_print("\nPlease enter your name: ")
     name = input()
     # name, health, maxHealth, mana, maxMana, attack, defense, gold
-    player = Player(name, 30, 30, 50, 50, 8, 0, 100)
-    slow_print(f"Hi {player.name}, it is a pleasure to meet you!")
-    slow_print("I am that handy voice in your head - here to guide you on your journey!")
-    slow_print("These lands are perilous, and there is no coming back from death.")
-    slow_print("Proceed with caution, friend.")
-    crossroads_scene(player)
+    player = Player(name, 30, 30, 50, 50, 8, 0, 100) # Initialize player
+    slow_print(f"Welcome to the magical lands of Magic Casters {player.name}!\n")
+    intro_text_ch1() # Main story intro
+    at_a_crossroads_ch1() # Called here to avoid printing this twice
+    crossroads_scene(player) # Pass to hub loop for ch1
 
 # crossroadsScene is the hub of chapter 1
 # Boolean flags in function header to control which paths are taken
 
 def crossroads_scene(player):
     """ Center of chapter one """
-    directions = ["left", "right", "forward", "backward"]
     slow_print("You are at a crossroads, and there are four paths open. Which do you choose?")
     user_input = ""
+    directions = ["left", "right", "forward", "backward"]
     while user_input not in directions:
         slow_print(f"Options: {directions}")
         user_input = input()
@@ -61,10 +60,10 @@ def crossroads_scene(player):
 
 def show_shadow_figure(player):
     """ Show shadowy figure """
-    options = ["run", "fight"]
     slow_print("You see a shadowy figure in the distance. It is approaching you.")
     slow_print("What do you do?")
     user_input = ""
+    options = ["run", "fight"]
     while user_input not in options:
         slow_print(f"Options: {options}")
         user_input = input()
@@ -102,11 +101,21 @@ def goblin_fight(player):
         to_town(player)
     return True
 
+# Puzzle stuff
+
+def puzzle_room(player):
+    """ Puzzle on up path """
+    if memory_puzzle() is True: # Call memory_puzzle - returns True when completed
+        print("You've completed the puzzle!")
+    crossroads_scene(player)
+
+# Town stuff
+
 def to_town(player):
     """ Head to town hub """
-    options = ["inn", "blacksmith", "armoury", "shop", "info", "leave"]
     slow_print("Welcome to town!")
     user_input = ""
+    options = ["inn", "blacksmith", "armoury", "shop", "info", "leave"]
     while user_input not in options:
         slow_print(f"Options: {options}")
         user_input = input()
@@ -146,8 +155,3 @@ def shop(player):
     slow_print(f"Mary (Shopkeep): Welcome to my shop {player.name}!\n You can buy stuff here.")
 
 
-def puzzle_room(player):
-    """ Puzzle on up path """
-    if memory_puzzle() is True:
-        print("You've completed the puzzle!")
-    crossroads_scene(player)
