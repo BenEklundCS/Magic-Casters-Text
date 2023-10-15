@@ -1,9 +1,9 @@
 """ Module imports """
-from modules.player import Player
-from modules.monsters import ShadowFigure, Goblin
-from modules.functions import slow_print, fight
-from modules.puzzles import memory_puzzle
-from modules.story import intro_text_ch1, at_a_crossroads_ch1
+from player import Player
+from monsters import ShadowFigure, Goblin
+from functions import slow_print, fight
+from puzzles import memory_puzzle
+from story import intro_text_ch1, at_a_crossroads_ch1
 
 # Initial scene function | introScene() --> crossroadsScene(player)
 # player object is generated in introScene() with a user made name

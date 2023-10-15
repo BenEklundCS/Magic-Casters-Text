@@ -1,6 +1,6 @@
 """ Chapter 1 module """
 from chapter_one import intro_scene
-from modules.menus import title, main_menu
+from menus import title, main_menu
 
 def main():
     """ Main function calling chapter1 intro_scene and title page """
