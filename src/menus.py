@@ -1,6 +1,6 @@
 """ Module import """
 from os import system
-from functions import slow_print, color
+from functions import slow_print, color, clear_terminal_line
 
 def title():
     """ Title screen """
@@ -19,10 +19,11 @@ def main_menu():
     print(color("2. Exit  ", "red"))
     # Handle input w/ valid options
     options = ['1', '2']
-    user_input = input()
+    user_input = ""
+    slow_print(f"Please make a selection: {options}")
     while user_input not in options:
-        slow_print("Invalid input!")
         user_input = input()
+        clear_terminal_line()
     system("clear")
     return True if user_input == '1' else False
 

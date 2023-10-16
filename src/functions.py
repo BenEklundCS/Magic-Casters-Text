@@ -55,7 +55,7 @@ def random_letter():
     """ Returns a random letter in the alphabet """
     return random.choice(string.ascii_letters)
 
-# Other stuff
+# Printing
 def slow_print(text):
     """ take text and print it character by character """
 
@@ -74,7 +74,28 @@ def slower_print(text):
         time.sleep(0.04)
     print()
 
-# Quick method to end the game
+def print_attack(self, monster, roll, attack_name):
+    """ Print player attack """
+    raw_damage = roll + self.attack
+    total_damage = raw_damage - monster.defense
+    slow_print(f"You rolled a {roll} for your {attack_name} attack for {raw_damage} damage.")
+    slow_print(f"{monster.name} blocked {monster.defense} damage, for {total_damage} total damage.")
+    monster.health = monster.health - total_damage
+    slow_print(f"The {monster.name}'s health is now {monster.health}")
+
+def clear_terminal_line():
+    """ uses sys to move up a line and clear """
+    sys.stdout.write("\033[F") # back to previous line
+    sys.stdout.write("\033[K") # clear line
+
+def line_break():
+    """ Line break in terminal """
+    print("\n")
+    print(color("##################################################", "gray"))
+    print(color("##################################################", "gray"))
+    print("\n")
+
+# Game over 
 def game_over():
     """ End game """
     print(color("##################################################", "red"))
@@ -130,27 +151,7 @@ def fight(player, monster, player_turn):
         user_input = ""
     return False
 
-def print_attack(self, monster, roll, attack_name):
-    """ Print player attack """
-    raw_damage = roll + self.attack
-    total_damage = raw_damage - monster.defense
-    slow_print(f"You rolled a {roll} for your {attack_name} attack for {raw_damage} damage.")
-    slow_print(f"{monster.name} blocked {monster.defense} damage, for {total_damage} total damage.")
-    monster.health = monster.health - total_damage
-    slow_print(f"The {monster.name}'s health is now {monster.health}")
-
-def clear_terminal_line():
-    """ uses sys to move up a line and clear """
-    sys.stdout.write("\033[F") # back to previous line
-    sys.stdout.write("\033[K") # clear line
-
 def check_roll(roll, check):
     """ Formats roll and type into slow printed f-string """
     slow_print(f"... you roll a {roll} for {check}...")
 
-def line_break():
-    """ Line break in terminal """
-    print("\n")
-    print(color("##################################################", "gray"))
-    print(color("##################################################", "gray"))
-    print("\n")

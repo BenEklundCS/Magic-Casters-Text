@@ -5,8 +5,7 @@ from functions import slow_print, fight, line_break, clear_terminal_line
 from puzzles import memory_puzzle
 from story import intro_text_ch1, at_a_crossroads_ch1
 from menus import mini_header
-# Settings
-STORY_MODE = False
+from settings import *
 
 # Initial scene function | introScene() --> crossroadsScene(player)
 # player object is generated in introScene() with a user made name
@@ -18,7 +17,7 @@ def intro_scene():
     name = input()
     # name, health, maxHealth, mana, maxMana, attack, defense, gold
     player = Player(name, 30, 30, 50, 50, 8, 0, 100) # Initialize player
-    slow_print(f"Welcome to the magical lands of Magic Casters {player.name}!\n")
+    slow_print(f"Welcome to the lands of Magic Casters {player.name}!\n")
     line_break()
     # Story mode setting defined in header
     if STORY_MODE is True:
