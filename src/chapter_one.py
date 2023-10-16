@@ -149,6 +149,24 @@ def to_town(player):
 def inn(player):
     """ Town inn """
     slow_print(f"Dave (Innkeeper): Hi {player.name}, welcome to our humble inn!\n Here you can spend some coin to stay the night and rest up.")
+    options = ['rest', 'leave']
+    slow_print("A room will be 50 gold. What do you say?")
+    print(options)
+    user_input = ""
+    while user_input not in options:
+        user_input = input()
+        clear_terminal_line()
+    if user_input == "rest" and player.gold >= 50:
+        slow_print(f"Alright, here's your key, and breakfast will be served in the morning. Have a good night {player.name}!")
+        slow_print("You head up to the room, and lie down in the bed. A night well earned.")
+        slow_print("You begin to fall asleep .....")
+        line_break()
+        slow_print(f"You awaken feeling well rested! (HP: {player.health}/{player.max_health})")
+        player.health = player.max_health
+    elif user_input == "rest" and player.gold < 50:
+        slow_print(f"Sorry {player.name}, this is a business after all.")
+    else:
+        to_town(player)
 
 
 def blacksmith(player):
@@ -164,5 +182,3 @@ def armoury(player):
 def shop(player):
     """ Town shop """
     slow_print(f"Mary (Shopkeep): Welcome to my shop {player.name}!\n You can buy stuff here.")
-
-
