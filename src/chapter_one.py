@@ -116,7 +116,7 @@ def puzzle_room(player):
     line_break()
     if memory_puzzle() is True: # Call memory_puzzle - returns True when completed
         print("You've completed the puzzle!")
-    crossroads_scene(player)
+        crossroads_scene(player)
 
 # Town stuff
 

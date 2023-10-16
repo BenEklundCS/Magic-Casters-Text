@@ -1,4 +1,6 @@
-from functions import game_over, slow_print, roll_d20, random_letter, clear_terminal_line, check_roll
+""" Functions imports """
+from functions import game_over, roll_d20, random_letter, check_roll # Utility functions
+from functions import slow_print, clear_terminal_line # Terminal interactions
 
 LENGTH_OF_PUZZLE = 4
 
@@ -28,8 +30,9 @@ def memory_puzzle():
             chars.clear()
         else:
             slow_print("\rCorrect!")
-            if len(chars) == 7:
+            if len(chars) == LENGTH_OF_PUZZLE:
                 completed = True
+                break
         clear_terminal_line() # clear output (correct/incorrect)
         clear_terminal_line() # clear player input
         clear_terminal_line() # clear given letter
