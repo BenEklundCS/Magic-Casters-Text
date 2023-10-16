@@ -1,5 +1,5 @@
 """ Functions module """
-from functions import slow_print, roll_d4, roll_d6, color
+from functions import slow_print, roll_d4, roll_d6
 
 class Monster:
     """ Monster class """

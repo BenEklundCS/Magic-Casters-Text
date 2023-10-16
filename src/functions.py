@@ -13,20 +13,20 @@ YELLOW = '\x1b[6;30;43m'
 WHITE = '\x1b[6;30;47m'
 GRAY = '\x1b[6;30;40m'
 
-def color(string, color):
+def color(text, c):
     """ Used to color terminal output """
-    if color == "red":
-        return RED + string + END_COLOR
-    elif color == "green":
-        return GREEN + string + END_COLOR
-    elif color == "blue":
-        return BLUE + string + END_COLOR
-    elif color == "yellow":
-        return YELLOW + string + END_COLOR
-    elif color == "gray":
-        return GRAY + string + END_COLOR
+    if c == "red":
+        return RED + text + END_COLOR
+    elif c == "green":
+        return GREEN + text + END_COLOR
+    elif c == "blue":
+        return BLUE + text + END_COLOR
+    elif c == "yellow":
+        return YELLOW + text + END_COLOR
+    elif c == "gray":
+        return GRAY + text + END_COLOR
     else:
-        return WHITE + string + END_COLOR
+        return WHITE + text + END_COLOR
 
 # Dice
 def roll_d2():
