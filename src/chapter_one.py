@@ -1,22 +1,29 @@
 """ Module imports """
 from player import Player
 from monsters import ShadowFigure, Goblin
-from functions import slow_print, fight
+from functions import slow_print, fight, line_break, clear_terminal_line
 from puzzles import memory_puzzle
 from story import intro_text_ch1, at_a_crossroads_ch1
+from menus import mini_header
+# Settings
+STORY_MODE = False
 
 # Initial scene function | introScene() --> crossroadsScene(player)
 # player object is generated in introScene() with a user made name
 
 def intro_scene():
     """ Starting scene for chapter one """
+    mini_header()
     slow_print("\nPlease enter your name: ")
     name = input()
     # name, health, maxHealth, mana, maxMana, attack, defense, gold
     player = Player(name, 30, 30, 50, 50, 8, 0, 100) # Initialize player
     slow_print(f"Welcome to the magical lands of Magic Casters {player.name}!\n")
-    intro_text_ch1() # Main story intro
-    at_a_crossroads_ch1() # Called here to avoid printing this twice
+    line_break()
+    # Story mode setting defined in header
+    if STORY_MODE is True:
+        intro_text_ch1() # Main story intro
+        at_a_crossroads_ch1() # Called here to avoid printing this twice
     crossroads_scene(player) # Pass to hub loop for ch1
 
 # crossroadsScene is the hub of chapter 1
@@ -30,6 +37,7 @@ def crossroads_scene(player):
     while user_input not in directions:
         slow_print(f"Options: {directions}")
         user_input = input()
+        clear_terminal_line() # Clear terminal after user input
         # Left
         if user_input == "left" and player.progress["CH1"]["crossroads_scene"]["left_completed"] is False:
             show_shadow_figure(player)
@@ -67,6 +75,7 @@ def show_shadow_figure(player):
     while user_input not in options:
         slow_print(f"Options: {options}")
         user_input = input()
+        clear_terminal_line()
         if user_input == "run":
             slow_print("You run away from the shadowy figure.")
             slow_print("You find yourself back at the crossroads.")
@@ -81,7 +90,7 @@ def show_shadow_figure(player):
 def shadow_fight(player):
     """ Shadow fight on left path """
     # name, health, mana, attack, defense, gold
-    monster = ShadowFigure("Shadowy Figure", 50, 100, 15, 0, 50)
+    monster = ShadowFigure("Shadowy Figure", 40, 100, 12, 0, 50)
     if fight(player, monster, True) is True:
         slow_print(
             "You also find a key on the shadowy figure's body. Maybe it will be useful later?"
@@ -92,12 +101,12 @@ def shadow_fight(player):
 
 def goblin_fight(player):
     """ Goblin fight on right path """
-    monster = Goblin("Gob", 25, 50, 10, 0, 100)
+    monster = Goblin("Gob", 20, 50, 7, 0, 100)
     slow_print("A goblin has appeared!")
     if fight(player, monster, True) is True:
         player.progress["CH1"]["crossroads_scene"]["right_completed"] = True
-        slow_print(
-            "You see the light of a town up ahead, and decide to continue down the trail towards it.")
+        slow_print("You see the light of a town up ahead, and decide to continue down the trail towards it.")
+        line_break()
         to_town(player)
     return True
 
@@ -105,6 +114,7 @@ def goblin_fight(player):
 
 def puzzle_room(player):
     """ Puzzle on up path """
+    line_break()
     if memory_puzzle() is True: # Call memory_puzzle - returns True when completed
         print("You've completed the puzzle!")
     crossroads_scene(player)
@@ -119,6 +129,7 @@ def to_town(player):
     while user_input not in options:
         slow_print(f"Options: {options}")
         user_input = input()
+        clear_terminal_line() # Clear terminal after user input
         if user_input == "inn":
             inn(player)
         elif user_input == "blacksmith":

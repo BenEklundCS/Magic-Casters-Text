@@ -1,5 +1,5 @@
 """ Functions used for player class """
-from functions import slow_print, roll_d8, roll_d6, print_attack
+from functions import slow_print, roll_d8, roll_d6, print_attack, color
 
 class Player:
     """ Player class definition """
@@ -29,7 +29,7 @@ class Player:
     def check_death(self):
         """ Checks if the player is dead """
         if self.health <= 0:
-            slow_print("You have died.")
+            slow_print(color("You have died.", "red"))
             return True
         return False
 
@@ -39,7 +39,7 @@ class Player:
         """ Slash attack for 1d6 """
         slow_print(f"You slash the {monster.name}.")
         roll = roll_d6()
-        print_attack(self, monster, roll)
+        print_attack(self, monster, roll, "slash")
 
     # Slam attack, costs mana for 2d8 + base
     def slam(self, monster):
@@ -47,7 +47,7 @@ class Player:
         self.mana = self.mana - 5
         slow_print(f"You slam the {monster.name} {self.mana}/{self.max_mana}")
         roll = roll_d8()+roll_d8()
-        print_attack(self, monster, roll)
+        print_attack(self, monster, roll, "slam")
 
     # Utility
     # Function to skip turn if needed

@@ -1,5 +1,7 @@
 from functions import game_over, slow_print, roll_d20, random_letter, clear_terminal_line, check_roll
 
+LENGTH_OF_PUZZLE = 4
+
 def memory_puzzle():
     """ Puzzle to test the players memory, forward path on crossroads """
     slow_print("You come across a stone room, with runes on the walls.")
@@ -13,7 +15,7 @@ def memory_puzzle():
     completed = False
     chars = []
     failures = 0
-    while completed is False and len(chars) <= 7:
+    while completed is False and len(chars) <= LENGTH_OF_PUZZLE:
         letter = random_letter()
         chars.append(letter)
         print(letter)
@@ -28,7 +30,6 @@ def memory_puzzle():
             slow_print("\rCorrect!")
             if len(chars) == 7:
                 completed = True
-        
         clear_terminal_line() # clear output (correct/incorrect)
         clear_terminal_line() # clear player input
         clear_terminal_line() # clear given letter

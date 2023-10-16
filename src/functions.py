@@ -4,6 +4,30 @@ import random
 import sys
 import string # used for string.ascii_letters
 
+# Color
+END_COLOR = '\x1b[0m'
+RED = '\x1b[6;30;41m'
+GREEN = '\x1b[6;30;42m'
+BLUE = '\x1b[6;30;44m'
+YELLOW = '\x1b[6;30;43m'
+WHITE = '\x1b[6;30;47m'
+GRAY = '\x1b[6;30;40m'
+
+def color(string, color):
+    """ Used to color terminal output """
+    if color == "red":
+        return RED + string + END_COLOR
+    elif color == "green":
+        return GREEN + string + END_COLOR
+    elif color == "blue":
+        return BLUE + string + END_COLOR
+    elif color == "yellow":
+        return YELLOW + string + END_COLOR
+    elif color == "gray":
+        return GRAY + string + END_COLOR
+    else:
+        return WHITE + string + END_COLOR
+
 # Dice
 def roll_d2():
     """ d2 die """
@@ -53,10 +77,11 @@ def slower_print(text):
 # Quick method to end the game
 def game_over():
     """ End game """
-
-    slow_print("You have lost! The kingdom is doomed!")
-    slow_print("GAME OVER")
-    input()
+    print(color("##################################################", "red"))
+    print(color("#                  GAME OVER                     #", "red"))
+    print(color("##################################################", "red"))
+    print("Thank you for playing! :)")
+    input() # Hold user at game over until input
     exit()
 
 # Fight loop
@@ -72,9 +97,11 @@ def fight(player, monster, player_turn):
     if player.check_death() is True:
         game_over()
     while user_input not in options:
+        line_break()
         slow_print("It is your turn to attack.")
         slow_print(f"Options: {options}")
         user_input = input()
+        clear_terminal_line()
         # Possible user attacks
         if user_input == "slash":
             player.slash(monster)
@@ -103,11 +130,11 @@ def fight(player, monster, player_turn):
         user_input = ""
     return False
 
-def print_attack(self, monster, roll):
+def print_attack(self, monster, roll, attack_name):
     """ Print player attack """
     raw_damage = roll + self.attack
     total_damage = raw_damage - monster.defense
-    slow_print(f"You rolled a {roll} for your slam attack for {raw_damage} damage.")
+    slow_print(f"You rolled a {roll} for your {attack_name} attack for {raw_damage} damage.")
     slow_print(f"{monster.name} blocked {monster.defense} damage, for {total_damage} total damage.")
     monster.health = monster.health - total_damage
     slow_print(f"The {monster.name}'s health is now {monster.health}")
@@ -120,3 +147,10 @@ def clear_terminal_line():
 def check_roll(roll, check):
     """ Formats roll and type into slow printed f-string """
     slow_print(f"... you roll a {roll} for {check}...")
+
+def line_break():
+    """ Line break in terminal """
+    print("\n")
+    print(color("##################################################", "gray"))
+    print(color("##################################################", "gray"))
+    print("\n")
