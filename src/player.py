@@ -82,6 +82,6 @@ def initialize_player():
     slow_print("\nPlease enter your name: ")
     name = input()
     # name, health, maxHealth, mana, maxMana, attack, defense, gold
-    player = Player(name, 30, 30, 50, 50, 8, 0, 100) # Initialize player
+    player = Player(name, 50, 30, 50, 50, 10, 0, 100) # Initialize player
     slow_print(f"Welcome to the lands of Magic Casters {player.name}!\n")
     return player
