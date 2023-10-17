@@ -14,7 +14,6 @@ class Monster:
 
     def check_death(self, player):
         """ Check if monster is dead and add gold to player """
-
         if self.health <= 0:
             slow_print(f"You have won the battle! The {self.name} had {self.gold} gold on its body.")
             player.gold = player.gold + self.gold
@@ -51,7 +50,7 @@ class ShadowFigure(Monster):
     """ Shadowy Figure """
     
     def __init__(self, name, health, mana, attack, defense, gold):
-        super().__init__("Shadowy Figure", 40, 0, 8, 5, 50)
+        super().__init__("Shadowy Figure", 20, 0, 8, 5, 50)
 
     def self_heal(self):
         """ Heal self """

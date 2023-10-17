@@ -5,29 +5,29 @@ import sys
 import string # used for string.ascii_letters
 
 # Color
+
 END_COLOR = '\033[0m'
-RED = '\033[1;31;49m'
-GREEN = '\033[1;32;49m'
-BLUE = '\033[1;34;49m'
-YELLOW = '\033[1;33;49m'
-WHITE = '\033[1;37;49m'
-GRAY = '\033[0;37;49m'
+RED_COLOR = '\033[1;31;49m'
+GREEN_COLOR = '\033[1;32;49m'
+BLUE_COLOR = '\033[1;34;49m'
+YELLOW_COLOR = '\033[1;33;49m'
+WHITE_COLOR = '\033[1;37;49m'
+GRAY_COLOR = '\033[0;37;49m'
 
-
-def color(text, c):
+def color(text, clr):
     """ Used to color terminal output """
-    if c == "red":
-        return RED + text + END_COLOR
-    elif c == "green":
-        return GREEN + text + END_COLOR
-    elif c == "blue":
-        return BLUE + text + END_COLOR
-    elif c == "yellow":
-        return YELLOW + text + END_COLOR
-    elif c == "gray":
-        return GRAY + text + END_COLOR
+    if clr == "red":
+        return RED_COLOR + text + END_COLOR
+    elif clr == "green":
+        return GREEN_COLOR + text + END_COLOR
+    elif clr == "blue":
+        return BLUE_COLOR + text + END_COLOR
+    elif clr == "yellow":
+        return YELLOW_COLOR + text + END_COLOR
+    elif clr == "gray":
+        return GRAY_COLOR + text + END_COLOR
     else:
-        return WHITE + text + END_COLOR
+        return WHITE_COLOR + text + END_COLOR
 
 # Dice
 def roll_d2():
@@ -155,4 +155,13 @@ def fight(player, monster, player_turn):
 def check_roll(roll, check):
     """ Formats roll and type into slow printed f-string """
     slow_print(f"... you roll a {roll} for {check}...")
+
+def validate_input(options):
+    """ Input validation """
+    print(f"Options: {options}")
+    user_input = input()
+    while user_input not in options:
+        print("Invalid input!")
+        user_input = input()
+    return user_input
 

@@ -12,7 +12,6 @@ class Player:
         self.attack = attack
         self.defense = defense
         self.gold = gold
-        #self.actions = {"slash":True, "slam":True, "info":True, "pass":True} unlockable actions over time by building "options" from the key and values of this variable
         self.progress = { # Solution to global tracking of progress for now
                         "CH1":
                             {
@@ -72,7 +71,7 @@ class Player:
         self.health = self.max_health
         slow_print(f"You awaken feeling well rested! (HP: {self.health}/{self.max_health})")
 
-    def charge_player(self, gold):
+    def charge(self, gold):
         """ Player pays gold """
         self.gold = self.gold - gold
         slow_print(f"You pay {gold} gold ({self.gold} gold remaining)")
