@@ -59,7 +59,6 @@ def random_letter():
 # Printing
 def slow_print(text):
     """ take text and print it character by character """
-
     for character in text:
         sys.stdout.write(character)
         sys.stdout.flush()
@@ -68,7 +67,6 @@ def slow_print(text):
 
 def slower_print(text):
     """ take text and print it character by character """
-
     for character in text:
         sys.stdout.write(character)
         sys.stdout.flush()
@@ -164,4 +162,3 @@ def validate_input(options):
         print("Invalid input!")
         user_input = input()
     return user_input
-

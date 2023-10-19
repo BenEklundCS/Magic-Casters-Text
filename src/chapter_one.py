@@ -1,7 +1,7 @@
 """ Module imports """
 from player import initialize_player
 from monsters import ShadowFigure, Goblin
-from functions import slow_print, fight, line_break, clear_terminal_line, validate_input
+from functions import slow_print, fight, line_break, validate_input
 from puzzles import memory_puzzle
 from story import intro_text_ch1, at_a_crossroads_ch1
 from menus import mini_header

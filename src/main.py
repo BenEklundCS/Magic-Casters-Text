@@ -9,4 +9,6 @@ def main():
         intro_scene()
     else:
         quit()
-main()
+
+if __name__ == "__main__":
+    main()
