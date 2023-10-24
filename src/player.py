@@ -25,6 +25,7 @@ class Player:
                         }
 
     # Functions
+    
     def check_death(self):
         """ Checks if the player is dead """
         if self.health <= 0:
@@ -40,7 +41,6 @@ class Player:
         roll = roll_d6()
         print_attack(self, monster, roll, "slash")
 
-    # Slam attack, costs mana for 2d8 + base
     def slam(self, monster):
         """ Slam attack for 2d8 and costs 5 mana """
         self.mana = self.mana - 5
@@ -49,12 +49,11 @@ class Player:
         print_attack(self, monster, roll, "slam")
 
     # Utility
-    # Function to skip turn if needed
+
     def pass_turn(self):
         """ Pass turn (do nothing) """
         slow_print("You pass your turn.")
 
-    # Info will be called from any player input to print all current stats
     def info(self):
         """ Prints all player class info """
         slow_print(f"Name: {self.name}")
