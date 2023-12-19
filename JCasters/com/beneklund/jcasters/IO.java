@@ -1,9 +1,17 @@
 package com.beneklund.jcasters;
 
+import java.util.Scanner;
+
 // This should be updated to a singleton pattern since I only need one IO stream at a time to the terminal
 
 public class IO {
-    final int LINE_LENGTH = 100;
+    final private int LINE_LENGTH = 100;
+    final private Scanner scanner;
+
+    IO() {
+        this.scanner = new Scanner(System.in);
+    }
+
     public void mainMenu() {
         System.out.println("\nWelcome to Magic Casters!");
         System.out.println("An object-oriented text rpg by Benjamin Eklund");

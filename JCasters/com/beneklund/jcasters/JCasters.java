@@ -5,7 +5,7 @@ public class JCasters {
     IO io;
 
     // Constructor initializes the game
-    private JCasters() {
+    public JCasters() {
         this.player = new Player("Name", 1, 1, 1, 1, 1, 1, 1);
         this.io = new IO();
     }
