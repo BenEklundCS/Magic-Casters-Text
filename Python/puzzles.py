@@ -15,10 +15,12 @@ def memory_puzzle():
         slow_print("You realize this must be an ancient runic memory puzzle.")
     else:
         slow_print("You fail to determine the meaning of this room. Maybe you can still survive?")
+
     # While puzzle is not completed...
     completed = False
     chars = []
     failures = 0
+    
     while completed is False and len(chars) <= LENGTH_OF_PUZZLE:
         # Generate a random letter and add it to the chars buffer
         letter = random_letter()

@@ -17,11 +17,17 @@ public class JCasters {
         JCasters game = new JCasters(); // create a game instance / init
         game.io.clearTerminal();
         game.io.mainMenu();
-        /*
+        
+        game.io.clearTerminal();
+        
+        
         ArrayList<String> list = new ArrayList(Arrays.asList("N", "S", "E", "W"));
-        Action a = new Action(list,  "Please enter a direction: ");
-        String s = a.getPlayerChoice();
-        System.out.println(s);
-        */
+        Action action = new Action(list,  "Please enter a direction: ");
+        String string = action.getPlayerChoice();
+        System.out.println(string);
+
+        Player p = new Player("Name",1,1,1,1,1,1,1);
+        String name = p.getName();
+        System.out.println(name);
     }
 }
