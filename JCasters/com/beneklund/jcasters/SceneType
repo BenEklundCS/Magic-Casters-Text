@@ -1,6 +1,0 @@
-package com.beneklund.jcasters;
-
-enum SceneType {
-    ACTION,
-    TEXT
-}
